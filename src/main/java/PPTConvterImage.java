@@ -49,15 +49,12 @@ public class PPTConvterImage {
 		for (int i = 0; i < slide.length; i++) {
  			BufferedImage img = new BufferedImage(pgsize.width, pgsize.height, BufferedImage.TYPE_INT_RGB);
 			Graphics2D graphics = img.createGraphics();
-			// 이미지 영역을 클리어
 			graphics.setPaint(Color.white);
 			graphics.fill(new Rectangle2D.Float(0, 0, pgsize.width, pgsize.height));
 			
-			// 이미지 그리기
 			slide[i].draw(graphics);
 			
 			String fileName = this.cvtOrgImgFile.getAbsolutePath()+"\\" + (i + 1)+ "."+type;
-			// 파일로 저장
 			FileOutputStream out = new FileOutputStream(fileName);
 			ImageIO.write(img, type, out);
 			out.close();
